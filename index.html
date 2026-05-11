@@ -1,0 +1,705 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sans Noise — AI Clarity for Executives</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --navy:          #1A2C52;
+  --violet:        #7C3AED;
+  --violet-light:  #ede9fb;
+  --violet-mid:    #c4b0f5;
+  --green:         #059669;
+  --green-light:   #d1fae5;
+  --bg:            #f9f8f6;
+  --bg-alt:        #f2f0ec;
+  --white:         #ffffff;
+  --text:          #1A2C52;
+  --text-mid:      #4a5568;
+  --text-muted:    #8898b0;
+  --border:        rgba(26,44,82,0.1);
+  --border-strong: rgba(26,44,82,0.18);
+  --serif: 'Instrument Serif', Georgia, serif;
+  --sans:  'DM Sans', system-ui, sans-serif;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--sans);
+  font-size: 16px;
+  line-height: 1.65;
+  font-weight: 300;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* NAV */
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  padding: 1.1rem 2.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: rgba(249,248,246,0.9);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-bottom: 1px solid var(--border);
+}
+
+.nav-logo {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  height: 36px;
+}
+.nav-logo img {
+  height: 36px;
+  width: auto;
+  display: block;
+}
+.nav-logo-placeholder {
+  height: 36px;
+  width: 120px;
+  border: 1.5px dashed var(--border-strong);
+  border-radius: 3px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--sans);
+  font-size: 0.7rem;
+  font-weight: 400;
+  color: var(--text-muted);
+  letter-spacing: 0.04em;
+}
+
+.nav-links { display: flex; gap: 2rem; list-style: none; align-items: center; }
+.nav-links a { color: var(--text-mid); text-decoration: none; font-size: 0.875rem; font-weight: 400; transition: color 0.2s; }
+.nav-links a:hover { color: var(--navy); }
+.nav-cta { background: var(--navy) !important; color: white !important; padding: 0.5rem 1.25rem !important; border-radius: 3px !important; font-weight: 500 !important; transition: background 0.2s !important; }
+.nav-cta:hover { background: var(--violet) !important; }
+
+/* SHARED */
+section { padding: 6rem 2.5rem; }
+.container { max-width: 1060px; margin: 0 auto; }
+
+.label {
+  display: block;
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--violet);
+  margin-bottom: 1rem;
+}
+
+.section-heading {
+  font-family: var(--serif);
+  font-size: clamp(2rem, 4vw, 3rem);
+  line-height: 1.13;
+  letter-spacing: -0.01em;
+  color: var(--navy);
+  margin-bottom: 1.25rem;
+}
+.section-heading em { font-style: italic; color: var(--violet); }
+
+.section-body { font-size: 1.0625rem; color: var(--text-mid); max-width: 600px; line-height: 1.78; }
+
+.btn-primary { display: inline-block; background: var(--navy); color: white; text-decoration: none; font-weight: 500; font-size: 0.9375rem; padding: 0.875rem 2rem; border-radius: 3px; transition: background 0.2s, transform 0.15s; }
+.btn-primary:hover { background: var(--violet); transform: translateY(-1px); }
+
+.btn-outline { display: inline-block; color: var(--navy); text-decoration: none; font-weight: 400; font-size: 0.9375rem; padding: 0.875rem 1.5rem; border: 1px solid var(--border-strong); border-radius: 3px; transition: border-color 0.2s, color 0.2s; }
+.btn-outline:hover { border-color: var(--violet); color: var(--violet); }
+
+.fade-up { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease, transform 0.6s ease; }
+.fade-up.visible { opacity: 1; transform: translateY(0); }
+
+/* HERO */
+.hero-wrap { max-width: 1060px; margin: 0 auto; padding: 0 2.5rem; }
+.hero {
+  min-height: 80vh;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: 4rem;
+  padding: 6rem 0 3.5rem;
+}
+
+.hero-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--green);
+  margin-bottom: 1.75rem;
+}
+.hero-eyebrow::before { content: ''; display: block; width: 20px; height: 2px; background: var(--green); }
+
+.hero h1 { font-family: var(--serif); font-size: clamp(2.75rem, 5vw, 4.75rem); line-height: 1.07; letter-spacing: -0.02em; color: var(--navy); margin-bottom: 1.75rem; }
+.hero h1 em { font-style: italic; color: var(--violet); }
+
+.hero-sub { font-size: 1.125rem; color: var(--text-mid); line-height: 1.75; margin-bottom: 2.5rem; max-width: 440px; }
+.hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; }
+
+.hero-graphic { display: flex; align-items: center; justify-content: center; }
+
+/* PROBLEM */
+#problem { background: var(--white); }
+
+.problem-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem 5rem;
+}
+
+.problem-left { grid-column: 1; grid-row: 1; }
+.problem-right { grid-column: 2; grid-row: 1 / 3; display: flex; flex-direction: column; justify-content: center; }
+.problem-items { grid-column: 1; grid-row: 2; display: flex; flex-direction: column; gap: 2.25rem; padding-top: 1rem; }
+
+.problem-item h3 { font-family: var(--serif); font-size: 1.25rem; color: var(--navy); margin-bottom: 0.5rem; }
+.problem-item p { font-size: 0.9375rem; color: var(--text-mid); line-height: 1.75; }
+
+.tension-chart {
+  width: 100%;
+  background: var(--bg);
+  border-radius: 8px;
+  padding: 1.75rem;
+  border: 1px solid var(--border);
+}
+.tension-chart-title { font-size: 0.72rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 1.5rem; }
+
+.bar-row { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1rem; }
+.bar-row:last-of-type { margin-bottom: 0; }
+.bar-label { font-size: 0.8125rem; color: var(--text-mid); min-width: 110px; flex-shrink: 0; }
+.bar-track { flex: 1; height: 8px; background: var(--bg-alt); border-radius: 4px; overflow: hidden; }
+.bar-fill { height: 100%; border-radius: 4px; background: var(--violet); transform-origin: left; transform: scaleX(0); transition: transform 1s cubic-bezier(0.4,0,0.2,1); }
+.bar-fill.green { background: var(--green); }
+.bar-fill.animated { transform: scaleX(1); }
+.bar-pct { font-size: 0.8125rem; font-weight: 500; color: var(--navy); min-width: 36px; text-align: right; }
+
+/* OFFER */
+#offer { background: var(--navy); color: white; }
+#offer .label { color: var(--violet-mid); }
+#offer .section-heading { color: white; }
+#offer .section-heading em { color: var(--violet-mid); }
+#offer .section-body { color: rgba(255,255,255,0.65); }
+
+.offer-top { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; margin-bottom: 4rem; }
+
+.program-flow { display: flex; flex-direction: column; }
+
+.phase-row { display: grid; grid-template-columns: 52px 1fr; gap: 1.25rem; padding: 1.75rem 0; border-top: 1px solid rgba(255,255,255,0.08); align-items: start; }
+.phase-row:last-child { border-bottom: 1px solid rgba(255,255,255,0.08); }
+.phase-num { font-family: var(--serif); font-size: 2rem; color: rgba(124,58,237,0.4); line-height: 1; padding-top: 0.1rem; }
+.phase-content h3 { font-family: var(--serif); font-size: 1.125rem; color: white; margin-bottom: 0.4rem; }
+.phase-content p { font-size: 0.9rem; color: rgba(255,255,255,0.55); line-height: 1.7; }
+.phase-optional { font-family: var(--sans); font-size: 0.75rem; font-style: normal; color: rgba(124,58,237,0.5); font-weight: 400; margin-left: 0.4rem; }
+
+.day-visual { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; padding: 2rem; }
+.day-visual-title { font-size: 0.7rem; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(255,255,255,0.3); margin-bottom: 1.75rem; }
+
+.timeline-item { display: flex; gap: 1rem; margin-bottom: 1.25rem; align-items: flex-start; }
+.timeline-item:last-child { margin-bottom: 0; }
+.tl-time { font-size: 0.75rem; color: rgba(255,255,255,0.3); min-width: 52px; padding-top: 0.15rem; font-variant-numeric: tabular-nums; }
+.tl-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--violet); flex-shrink: 0; margin-top: 0.35rem; position: relative; }
+.tl-dot.green { background: var(--green); }
+.tl-dot.dim { background: rgba(255,255,255,0.15); }
+.tl-dot::after { content: ''; position: absolute; top: 8px; left: 3px; width: 1px; height: 26px; background: rgba(255,255,255,0.07); }
+.timeline-item:last-child .tl-dot::after { display: none; }
+.tl-content strong { display: block; font-size: 0.875rem; font-weight: 500; color: rgba(255,255,255,0.85); margin-bottom: 0.1rem; }
+.tl-content strong.dim { color: rgba(255,255,255,0.35); }
+.tl-content span { font-size: 0.8125rem; color: rgba(255,255,255,0.4); }
+
+/* OUTCOMES */
+#outcomes { background: var(--bg-alt); }
+
+.outcomes-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  background: var(--border);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  overflow: hidden;
+  margin-top: 3.5rem;
+}
+
+.outcome-card { background: var(--white); padding: 2rem 1.75rem; }
+.outcome-mark { width: 28px; height: 28px; border-radius: 50%; background: var(--violet-light); display: flex; align-items: center; justify-content: center; margin-bottom: 1.25rem; }
+.outcome-mark svg { width: 14px; height: 14px; stroke: var(--violet); fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.outcome-card h3 { font-size: 0.9375rem; font-weight: 500; color: var(--navy); margin-bottom: 0.5rem; line-height: 1.35; }
+.outcome-card p { font-size: 0.875rem; color: var(--text-mid); line-height: 1.7; }
+
+/* WHO */
+#who { background: var(--white); }
+
+.who-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2.5rem; margin-top: 3.5rem; }
+.who-card { padding: 2.5rem; border-radius: 6px; border: 1px solid var(--border); }
+.who-card.is-for { border-color: var(--violet); background: var(--violet-light); }
+.who-card h3 { font-family: var(--serif); font-size: 1.1875rem; color: var(--navy); margin-bottom: 1.25rem; }
+.who-card.is-not h3 { color: var(--text-muted); }
+.who-list { list-style: none; display: flex; flex-direction: column; gap: 0.75rem; }
+.who-list li { font-size: 0.9375rem; color: var(--text-mid); padding-left: 1.25rem; position: relative; line-height: 1.5; }
+.who-list li::before { content: '—'; position: absolute; left: 0; color: var(--violet); font-size: 0.75rem; top: 0.2em; }
+.who-card.is-not .who-list li::before { color: var(--text-muted); }
+.who-card.is-not .who-list li { color: rgba(74,85,104,0.5); }
+
+/* ABOUT */
+#about { background: var(--bg); }
+
+.about-grid { display: grid; grid-template-columns: 1.1fr 1fr; gap: 5rem; align-items: center; }
+
+.about-quote { font-family: var(--serif); font-size: clamp(1.5rem, 2.5vw, 2.125rem); line-height: 1.32; color: var(--navy); margin-bottom: 2rem; border-left: 3px solid var(--violet); padding-left: 1.5rem; }
+.about-quote em { font-style: italic; color: var(--violet); }
+.about-body { font-size: 0.9375rem; color: var(--text-mid); line-height: 1.8; margin-bottom: 1rem; }
+.about-sig { font-family: var(--serif); font-size: 1.125rem; color: var(--navy); margin-top: 2rem; }
+.about-sig span { display: block; font-family: var(--sans); font-size: 0.8rem; color: var(--text-muted); font-weight: 400; margin-top: 0.2rem; }
+
+.stat-stack { display: flex; flex-direction: column; gap: 1px; background: var(--border); border: 1px solid var(--border); border-radius: 6px; overflow: hidden; }
+.stat-card { background: var(--white); padding: 1.75rem 2rem; }
+.stat-num { font-family: var(--serif); font-size: 3rem; color: var(--violet); line-height: 1; margin-bottom: 0.35rem; }
+.stat-label { font-size: 0.875rem; color: var(--text-muted); }
+
+/* CONTACT */
+#contact { background: var(--navy); }
+#contact .label { color: var(--violet-mid); }
+#contact .section-heading { color: white; }
+#contact .section-heading em { color: var(--violet-mid); }
+#contact .section-body { color: rgba(255,255,255,0.6); }
+
+.contact-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: start; }
+.contact-details { margin-top: 2.5rem; display: flex; flex-direction: column; gap: 1.5rem; }
+.contact-detail .dt { font-size: 0.7rem; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(255,255,255,0.35); margin-bottom: 0.25rem; }
+.contact-detail .dd { font-size: 0.9375rem; color: rgba(255,255,255,0.7); line-height: 1.6; }
+.contact-detail .dd a { color: var(--violet-mid); text-decoration: none; border-bottom: 1px solid rgba(196,176,245,0.3); transition: border-color 0.2s; }
+.contact-detail .dd a:hover { border-color: var(--violet-mid); }
+
+.contact-form { display: flex; flex-direction: column; gap: 1rem; }
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+.form-field { display: flex; flex-direction: column; gap: 0.375rem; }
+.form-field label { font-size: 0.8125rem; color: rgba(255,255,255,0.5); }
+.form-field input, .form-field textarea { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.12); border-radius: 3px; padding: 0.75rem 1rem; font-family: var(--sans); font-size: 0.9375rem; color: white; font-weight: 300; transition: border-color 0.2s, background 0.2s; width: 100%; }
+.form-field input::placeholder, .form-field textarea::placeholder { color: rgba(255,255,255,0.22); }
+.form-field input:focus, .form-field textarea:focus { outline: none; border-color: var(--violet-mid); background: rgba(124,58,237,0.08); }
+.form-field textarea { resize: vertical; min-height: 110px; }
+
+.form-submit { background: var(--violet); color: white; border: none; padding: 0.875rem 2rem; font-family: var(--sans); font-size: 0.9375rem; font-weight: 500; border-radius: 3px; cursor: pointer; display: flex; align-items: center; gap: 0.5rem; transition: background 0.2s; }
+.form-submit:hover { background: #6d28d9; }
+.form-submit svg { width: 16px; height: 16px; transition: transform 0.2s; }
+.form-submit:hover svg { transform: translateX(3px); }
+
+.form-success { display: none; padding: 2.5rem; border: 1px solid rgba(255,255,255,0.1); border-radius: 6px; text-align: center; background: rgba(255,255,255,0.04); }
+.form-success h3 { font-family: var(--serif); font-size: 1.5rem; color: white; margin-bottom: 0.5rem; }
+.form-success p { color: rgba(255,255,255,0.55); font-size: 0.9375rem; }
+
+/* FOOTER */
+footer { background: #111d38; padding: 1.75rem 2.5rem; display: flex; align-items: center; justify-content: space-between; }
+.footer-logo { font-family: var(--serif); font-size: 1rem; color: rgba(255,255,255,0.4); }
+.footer-note { font-size: 0.8125rem; color: rgba(255,255,255,0.2); }
+
+/* RESPONSIVE */
+@media (max-width: 820px) {
+  nav { padding: 1rem 1.5rem; }
+  .nav-links { display: none; }
+  .hero-wrap { padding: 0 1.5rem; }
+  .hero { grid-template-columns: 1fr; padding: 7rem 0 4rem; }
+  .hero-graphic { display: none; }
+  section { padding: 4rem 1.5rem; }
+  .problem-layout { grid-template-columns: 1fr; }
+  .problem-right { grid-column: 1; grid-row: auto; }
+  .problem-items { grid-column: 1; }
+  .offer-top { grid-template-columns: 1fr; }
+  .outcomes-grid { grid-template-columns: 1fr 1fr; }
+  .who-grid { grid-template-columns: 1fr; }
+  .about-grid { grid-template-columns: 1fr; gap: 3rem; }
+  .contact-inner { grid-template-columns: 1fr; gap: 3rem; }
+  .form-row { grid-template-columns: 1fr; }
+  footer { flex-direction: column; gap: 0.5rem; text-align: center; }
+}
+@media (max-width: 540px) {
+  .outcomes-grid { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="#" class="nav-logo">
+    <!-- Replace src with your logo file, e.g. src="logo.png" -->
+    <div class="nav-logo-placeholder">logo.png</div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#offer">The Program</a></li>
+    <li><a href="#outcomes">Outcomes</a></li>
+    <li><a href="#who">Who It's For</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#contact" class="nav-cta">Get in Touch</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<div class="hero-wrap">
+  <div class="hero">
+    <div class="hero-text fade-up">
+      <span class="hero-eyebrow">Executive AI Program &mdash; Singapore &amp; APAC</span>
+      <h1>Cut through<br>the <em>noise.</em><br>Start using AI<br>that actually works.</h1>
+      <p class="hero-sub">A hands-on program for senior leaders who want clarity, not hype — and practical skills they can use the same week.</p>
+      <div class="hero-actions">
+        <a href="#contact" class="btn-primary">Talk to us</a>
+        <a href="#offer" class="btn-outline">See the program &darr;</a>
+      </div>
+    </div>
+    <div class="hero-graphic fade-up" style="transition-delay:0.15s;">
+      <svg viewBox="0 0 440 380" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:460px;" role="img" aria-label="Chart showing AI vendor hype rising steeply while genuine capability grows steadily — with a widening gap between the two">
+        <title>AI hype vs. genuine utility</title>
+        <!-- Grid -->
+        <line x1="44" y1="58" x2="44" y2="298" stroke="#e2dfd8" stroke-width="1"/>
+        <line x1="44" y1="298" x2="412" y2="298" stroke="#e2dfd8" stroke-width="1"/>
+        <line x1="44" y1="218" x2="412" y2="218" stroke="#e2dfd8" stroke-width="0.5" stroke-dasharray="4 4"/>
+        <line x1="44" y1="138" x2="412" y2="138" stroke="#e2dfd8" stroke-width="0.5" stroke-dasharray="4 4"/>
+        <!-- Y labels -->
+        <text x="34" y="302" font-family="DM Sans,sans-serif" font-size="10" fill="#8898b0" text-anchor="end">low</text>
+        <text x="34" y="222" font-family="DM Sans,sans-serif" font-size="10" fill="#8898b0" text-anchor="end">mid</text>
+        <text x="34" y="142" font-family="DM Sans,sans-serif" font-size="10" fill="#8898b0" text-anchor="end">high</text>
+        <!-- X labels -->
+        <text x="104" y="316" font-family="DM Sans,sans-serif" font-size="10" fill="#8898b0" text-anchor="middle">2022</text>
+        <text x="204" y="316" font-family="DM Sans,sans-serif" font-size="10" fill="#8898b0" text-anchor="middle">2023</text>
+        <text x="304" y="316" font-family="DM Sans,sans-serif" font-size="10" fill="#8898b0" text-anchor="middle">2024</text>
+        <text x="392" y="316" font-family="DM Sans,sans-serif" font-size="10" fill="#8898b0" text-anchor="middle">2025</text>
+        <!-- Noise area -->
+        <path d="M64,242 C84,202 94,134 124,102 C144,82 154,112 174,92 C194,70 204,77 224,62 C244,47 254,82 274,67 C294,54 304,80 324,62 C344,47 364,72 392,57 L392,298 L64,298 Z" fill="#7C3AED" fill-opacity="0.06"/>
+        <!-- Noise line -->
+        <path d="M64,242 C84,202 94,134 124,102 C144,82 154,112 174,92 C194,70 204,77 224,62 C244,47 254,82 274,67 C294,54 304,80 324,62 C344,47 364,72 392,57" stroke="#7C3AED" stroke-width="2" fill="none" opacity="0.75"/>
+        <!-- Signal area -->
+        <path d="M64,262 C124,260 184,244 244,228 C304,212 354,202 392,192 L392,298 L64,298 Z" fill="#059669" fill-opacity="0.08"/>
+        <!-- Signal line -->
+        <path d="M64,262 C124,260 184,244 244,228 C304,212 354,202 392,192" stroke="#059669" stroke-width="2.5" fill="none"/>
+        <!-- Gap indicator -->
+        <line x1="392" y1="57" x2="392" y2="192" stroke="#1A2C52" stroke-width="1" stroke-dasharray="3 3" opacity="0.3"/>
+        <text x="400" y="128" font-family="Instrument Serif,serif" font-size="11" fill="#1A2C52" opacity="0.5">gap</text>
+        <!-- Today dot on signal -->
+        <circle cx="392" cy="192" r="5" fill="#059669"/>
+        <text x="310" y="184" font-family="DM Sans,sans-serif" font-size="10" fill="#059669" font-weight="500">where things</text>
+        <text x="310" y="197" font-family="DM Sans,sans-serif" font-size="10" fill="#059669" font-weight="500">actually stand</text>
+        <!-- Legend -->
+        <rect x="64" y="334" width="14" height="3" rx="1" fill="#7C3AED" opacity="0.75"/>
+        <text x="84" y="339" font-family="DM Sans,sans-serif" font-size="11" fill="#4a5568">Vendor hype &amp; promises</text>
+        <rect x="230" y="334" width="14" height="3" rx="1" fill="#059669"/>
+        <text x="250" y="339" font-family="DM Sans,sans-serif" font-size="11" fill="#4a5568">Genuine capability</text>
+        <!-- Title -->
+        <text x="228" y="34" font-family="Instrument Serif,serif" font-size="14" fill="#1A2C52" text-anchor="middle">AI hype vs. genuine utility, 2022–2025</text>
+      </svg>
+    </div>
+  </div>
+</div>
+
+<!-- PROBLEM -->
+<section id="problem">
+  <div class="container">
+    <div class="problem-layout">
+      <div class="problem-left">
+        <span class="label">The situation</span>
+        <h2 class="section-heading">Everyone is talking<br>about AI. <em>Very few<br>are using it well.</em></h2>
+      </div>
+      <div class="problem-right fade-up">
+        <div class="tension-chart">
+          <div class="tension-chart-title">Where senior leaders actually are</div>
+          <div class="bar-row">
+            <div class="bar-label">Aware of AI</div>
+            <div class="bar-track"><div class="bar-fill" style="width:94%"></div></div>
+            <div class="bar-pct">94%</div>
+          </div>
+          <div class="bar-row">
+            <div class="bar-label">Have tried a tool</div>
+            <div class="bar-track"><div class="bar-fill" style="width:71%"></div></div>
+            <div class="bar-pct">71%</div>
+          </div>
+          <div class="bar-row">
+            <div class="bar-label">Use it weekly</div>
+            <div class="bar-track"><div class="bar-fill green" style="width:28%"></div></div>
+            <div class="bar-pct">28%</div>
+          </div>
+          <div class="bar-row">
+            <div class="bar-label">Real workflow fit</div>
+            <div class="bar-track"><div class="bar-fill green" style="width:11%"></div></div>
+            <div class="bar-pct">11%</div>
+          </div>
+          <p style="margin-top:1.25rem; font-size:0.75rem; color:var(--text-muted); line-height:1.5;">Illustrative — based on observed patterns across APAC executive cohorts</p>
+        </div>
+      </div>
+      <div class="problem-items fade-up">
+        <div class="problem-item">
+          <h3>Hype vs. reality</h3>
+          <p>AI companies conflate what's possible today with what might be possible tomorrow. Investors bet on the potential. Software companies slap AI on everything to signal they're "in the game." The result is noise at a scale that makes clear thinking genuinely hard.</p>
+        </div>
+        <div class="problem-item">
+          <h3>The pressure to deploy</h3>
+          <p>Senior leaders are under pressure to adopt AI — to increase efficiency, reduce headcount, or double productivity. The question isn't whether to act. It's where to start, and how to avoid the high failure rate that comes from mismatched expectations.</p>
+        </div>
+        <div class="problem-item">
+          <h3>The best antidote</h3>
+          <p>The most effective leaders in this transition are the ones who roll up their sleeves and learn the technology themselves — instead of delegating understanding to their teams and inheriting their blind spots.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- OFFER -->
+<section id="offer">
+  <div class="container">
+    <div style="margin-bottom:3.5rem;">
+        <span class="label">The program</span>
+        <h2 class="section-heading">The Executive <em>Brief</em></h2>
+        <p class="section-body" style="margin-top:1rem;">A full-day, in-person workshop for 4–8 senior leaders. Hands-on, practical, and built around your actual work — not hypothetical use cases.</p>
+      </div>
+
+    <div class="program-flow fade-up">
+      <div class="phase-row">
+        <div class="phase-num">01</div>
+        <div class="phase-content">
+          <h3>Pre-workshop preparation</h3>
+          <p>A brief survey in the days before the session surfaces the most immediate areas where genAI can have the highest impact — so the day is built around your real challenges, not generic ones.</p>
+        </div>
+      </div>
+      <div class="phase-row">
+        <div class="phase-num">02</div>
+        <div class="phase-content">
+          <h3>Cutting through the noise</h3>
+          <p>A clear, honest picture of where AI actually is today — and a permanent filter for separating signal from hype. You leave with a framework you'll use every time a new model or breathless headline lands on your desk.</p>
+        </div>
+      </div>
+      <div class="phase-row">
+        <div class="phase-num">03</div>
+        <div class="phase-content">
+          <h3>AI as a personal tool</h3>
+          <p>Exercises that map directly to your real workload. Not simulations — your actual documents, decisions, and problems, worked through live during the session.</p>
+        </div>
+      </div>
+      <div class="phase-row">
+        <div class="phase-num">04</div>
+        <div class="phase-content">
+          <h3>Developing the AI-native mindset</h3>
+          <p>A practical framework for evaluating any AI tool or initiative that lands on your desk — how to define the problem, how to define success, and how to build an honest ROI case.</p>
+        </div>
+      </div>
+      <div class="phase-row">
+        <div class="phase-num">05</div>
+        <div class="phase-content">
+          <h3>Post-workshop consulting <span class="phase-optional">(optional)</span></h3>
+          <p>Follow-up exercises and on-demand consulting hours for Q&amp;A. Draw on these as lessons bed in and new questions emerge — at the pace your team actually moves.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- OUTCOMES -->
+<section id="outcomes">
+  <div class="container">
+    <span class="label">What success looks like</span>
+    <h2 class="section-heading">What you can expect<br>within <em>a few weeks</em></h2>
+    <div class="outcomes-grid fade-up">
+      <div class="outcome-card">
+        <div class="outcome-mark"><svg viewBox="0 0 14 14"><path d="M2 7l3.5 3.5L12 3"/></svg></div>
+        <h3>Apply critical judgment to AI news</h3>
+        <p>Gauge how much of any new announcement is real vs. hype — instantly, without waiting for someone else's take.</p>
+      </div>
+      <div class="outcome-card">
+        <div class="outcome-mark"><svg viewBox="0 0 14 14"><path d="M2 7l3.5 3.5L12 3"/></svg></div>
+        <h3>Use genAI in your daily work</h3>
+        <p>Daily for mental sparring. Weekly for documents and content. Routinely for asking the right questions when facing a novel problem.</p>
+      </div>
+      <div class="outcome-card">
+        <div class="outcome-mark"><svg viewBox="0 0 14 14"><path d="M2 7l3.5 3.5L12 3"/></svg></div>
+        <h3>Identify business opportunities</h3>
+        <p>Pinpoint 2–3 areas in your business most suited to AI-based automation, and assemble the right team to assess the options.</p>
+      </div>
+      <div class="outcome-card">
+        <div class="outcome-mark"><svg viewBox="0 0 14 14"><path d="M2 7l3.5 3.5L12 3"/></svg></div>
+        <h3>Lead enterprise assessments</h3>
+        <p>Move from uncertainty to confidence when evaluating AI proposals from vendors, your own teams, and your board.</p>
+      </div>
+      <div class="outcome-card">
+        <div class="outcome-mark"><svg viewBox="0 0 14 14"><path d="M2 7l3.5 3.5L12 3"/></svg></div>
+        <h3>Generate your own AI roadmap</h3>
+        <p>Use the tools you've learned to build a realistic picture of where AI fits in your organization — and where it doesn't.</p>
+      </div>
+      <div class="outcome-card">
+        <div class="outcome-mark"><svg viewBox="0 0 14 14"><path d="M2 7l3.5 3.5L12 3"/></svg></div>
+        <h3>Lead from the front</h3>
+        <p>Be the leader who has done the work themselves — not the one who delegates understanding and inherits their team's blind spots.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHO -->
+<section id="who">
+  <div class="container">
+    <span class="label">Fit</span>
+    <h2 class="section-heading">Who this is <em>built for</em></h2>
+    <p class="section-body">The Executive Brief is deliberately focused. It works best when the fit is right.</p>
+    <div class="who-grid fade-up">
+      <div class="who-card is-for">
+        <h3>This program is for you if&hellip;</h3>
+        <ul class="who-list">
+          <li>You're a senior executive who wants to introduce genAI into your personal workflow</li>
+          <li>You want a foundation for assessing AI solutions at the enterprise level</li>
+          <li>You have basic familiarity with genAI but no technical background — and don't need one</li>
+          <li>You have a set of real problems that technology can help with</li>
+          <li>You're under pressure to act on AI and want to do it intelligently</li>
+        </ul>
+      </div>
+      <div class="who-card is-not">
+        <h3>This program is not for you if&hellip;</h3>
+        <ul class="who-list">
+          <li>You're a technical user looking to explore coding, development, or deployment</li>
+          <li>You need a specific product assessment or deployment strategy</li>
+          <li>You're an entry- or mid-level employee (the use case focus is strategic)</li>
+          <li>You're looking for overall IT or business architecture decisions</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="container">
+    <div class="about-grid">
+      <div>
+        <span class="label">About Sans Noise</span>
+        <blockquote class="about-quote">"The anxiety wasn't about AI itself — it was about the gap between what's <em>available today</em> and what vendors are promising for tomorrow."</blockquote>
+        <p class="about-body">Sans Noise was founded by Sami Ammous, a business leader with 20 years of experience in SaaS sales leadership across APAC. In running sales workshops, consulting with organizations on growth, and coaching executives through complex decisions, Sami noticed that every conversation eventually circled back to AI — the concerns, the doubts, the fear of falling behind.</p>
+        <p class="about-body">Sans Noise was built to close that gap: not with more noise, but with clarity, honesty, and hands-on practice.</p>
+        <div class="about-sig">Sami Ammous<span>Founder, Sans Noise &mdash; Singapore</span></div>
+      </div>
+      <div>
+        <div class="stat-stack fade-up">
+          <div class="stat-card">
+            <div class="stat-num">1</div>
+            <div class="stat-label">Full day, in-person — everything you need to start, nothing you don't</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-num">4–8</div>
+            <div class="stat-label">Participants per session — small by design, so everyone leaves with real skills</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-num">20+</div>
+            <div class="stat-label">Practical use cases covered — mapped to the work executives actually do</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="container">
+    <div class="contact-inner">
+      <div>
+        <span class="label">Get in touch</span>
+        <h2 class="section-heading">Let's talk about<br><em>your team</em></h2>
+        <p class="section-body">Tell us a bit about what you're dealing with and we'll come back to you within one business day.</p>
+        <div class="contact-details">
+          <div class="contact-detail">
+            <div class="dt">Based in</div>
+            <div class="dd">Singapore — available across APAC</div>
+          </div>
+          <div class="contact-detail">
+            <div class="dt">Email</div>
+            <div class="dd"><a href="mailto:hello@sansnoise.com">hello@sansnoise.com</a></div>
+          </div>
+          <div class="contact-detail">
+            <div class="dt">Program size</div>
+            <div class="dd">4–8 participants per session.<br>In-person, full day.</div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <form class="contact-form" id="contactForm" onsubmit="handleSubmit(event)">
+          <div class="form-row">
+            <div class="form-field">
+              <label for="fname">First name</label>
+              <input type="text" id="fname" name="fname" placeholder="Alex" required>
+            </div>
+            <div class="form-field">
+              <label for="lname">Last name</label>
+              <input type="text" id="lname" name="lname" placeholder="Chen" required>
+            </div>
+          </div>
+          <div class="form-field">
+            <label for="email">Work email</label>
+            <input type="email" id="email" name="email" placeholder="alex@company.com" required>
+          </div>
+          <div class="form-field">
+            <label for="role">Your role</label>
+            <input type="text" id="role" name="role" placeholder="CEO, CFO, VP of Operations…">
+          </div>
+          <div class="form-field">
+            <label for="company">Company &amp; industry</label>
+            <input type="text" id="company" name="company" placeholder="Acme Corp — Financial Services">
+          </div>
+          <div class="form-field">
+            <label for="message">What's prompting this? <span style="color:rgba(255,255,255,0.25);font-weight:300;">(optional)</span></label>
+            <textarea id="message" name="message" placeholder="A paragraph is fine — give us the situation, not the solved version."></textarea>
+          </div>
+          <button type="submit" class="form-submit">
+            Send message
+            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+          </button>
+        </form>
+        <div class="form-success" id="formSuccess">
+          <h3>Thank you.</h3>
+          <p>We'll be in touch within one business day.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-logo">Sans Noise</div>
+  <div class="footer-note">&copy; 2025 Sans Noise. Singapore.</div>
+</footer>
+
+<script>
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.fade-up').forEach(el => io.observe(el));
+
+  const barIO = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.querySelectorAll('.bar-fill').forEach((b, i) => {
+          setTimeout(() => b.classList.add('animated'), i * 120);
+        });
+        barIO.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.3 });
+  document.querySelectorAll('.tension-chart').forEach(el => barIO.observe(el));
+
+  function handleSubmit(e) {
+    e.preventDefault();
+    document.getElementById('contactForm').style.display = 'none';
+    document.getElementById('formSuccess').style.display = 'block';
+  }
+</script>
+</body>
+</html>
