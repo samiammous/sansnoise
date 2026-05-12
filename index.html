@@ -304,6 +304,25 @@ section { padding: 6rem 2.5rem; }
 .form-success h3 { font-family: var(--serif); font-size: 1.5rem; color: white; margin-bottom: 0.5rem; }
 .form-success p { color: rgba(255,255,255,0.55); font-size: 0.9375rem; }
 
+.say-hello-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: var(--violet);
+  color: white;
+  text-decoration: none;
+  font-family: var(--sans);
+  font-size: 1rem;
+  font-weight: 500;
+  padding: 0.875rem 2rem;
+  border-radius: 3px;
+  transition: background 0.2s;
+  letter-spacing: 0.01em;
+}
+.say-hello-btn:hover { background: #6d28d9; }
+.say-hello-btn svg { width: 16px; height: 16px; transition: transform 0.2s; }
+.say-hello-btn:hover svg { transform: translateX(3px); }
+
 /* FOOTER */
 footer { background: #111d38; padding: 1.75rem 2.5rem; display: flex; align-items: center; justify-content: space-between; }
 .footer-logo { font-family: var(--serif); font-size: 1rem; color: rgba(255,255,255,0.4); }
@@ -619,56 +638,21 @@ footer { background: #111d38; padding: 1.75rem 2.5rem; display: flex; align-item
         <p class="section-body">Tell us a bit about what you're dealing with and we'll come back to you within one business day.</p>
         <div class="contact-details">
           <div class="contact-detail">
-            <div class="dt">Based in</div>
-            <div class="dd">Singapore — available across APAC</div>
-          </div>
-          <div class="contact-detail">
             <div class="dt">Email</div>
             <div class="dd"><a href="mailto:hello@sansnoise.com">hello@sansnoise.com</a></div>
           </div>
           <div class="contact-detail">
             <div class="dt">Program size</div>
-            <div class="dd">4–8 participants per session.<br>In-person, full day.</div>
+            <div class="dd">4–8 participants per session. In-person, full day.</div>
           </div>
         </div>
       </div>
-      <div>
-        <form class="contact-form" id="contactForm" action="https://formspree.io/f/mbdwqono" method="POST" onsubmit="handleSubmit(event)">
-          <div class="form-row">
-            <div class="form-field">
-              <label for="fname">First name</label>
-              <input type="text" id="fname" name="fname" placeholder="Alex" required>
-            </div>
-            <div class="form-field">
-              <label for="lname">Last name</label>
-              <input type="text" id="lname" name="lname" placeholder="Chen" required>
-            </div>
-          </div>
-          <div class="form-field">
-            <label for="email">Work email</label>
-            <input type="email" id="email" name="email" placeholder="alex@company.com" required>
-          </div>
-          <div class="form-field">
-            <label for="role">Your role</label>
-            <input type="text" id="role" name="role" placeholder="CEO, CFO, VP of Operations…">
-          </div>
-          <div class="form-field">
-            <label for="company">Company &amp; industry</label>
-            <input type="text" id="company" name="company" placeholder="Acme Corp — Financial Services">
-          </div>
-          <div class="form-field">
-            <label for="message">What's prompting this? <span style="color:rgba(255,255,255,0.25);font-weight:300;">(optional)</span></label>
-            <textarea id="message" name="message" placeholder="A paragraph is fine — give us the situation, not the solved version."></textarea>
-          </div>
-          <button type="submit" class="form-submit">
-            Send message
-            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
-          </button>
-        </form>
-        <div class="form-success" id="formSuccess">
-          <h3>Thank you.</h3>
-          <p>We'll be in touch within one business day.</p>
-        </div>
+      <div style="display:flex; flex-direction:column; align-items:center; gap:1.5rem;">
+        <img src="sami.png" alt="Sami Ammous" style="width:100%; max-width:260px; aspect-ratio:3/2; object-fit:cover; border-radius:6px; display:block;">
+        <a href="mailto:hello@sansnoise.com" class="say-hello-btn">
+          Say Hello
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+        </a>
       </div>
     </div>
   </div>
@@ -697,11 +681,6 @@ footer { background: #111d38; padding: 1.75rem 2.5rem; display: flex; align-item
   }, { threshold: 0.3 });
   document.querySelectorAll('.tension-chart').forEach(el => barIO.observe(el));
 
-  function handleSubmit(e) {
-    e.preventDefault();
-    document.getElementById('contactForm').style.display = 'none';
-    document.getElementById('formSuccess').style.display = 'block';
-  }
 </script>
 </body>
 </html>
